@@ -1,0 +1,86 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class indents implements rules {
+
+    public void speed() {
+
+    }
+
+    public void no_of_nests() {
+
+    }
+
+    public void variable_name(String Filename) {
+
+    }
+
+    public void indent(String Filename) {
+        File file = new File(Filename);
+        int curv_count = 0;
+        int space = 0;
+        String ch;
+
+        int spaces = 0;
+        String cc;
+        Boolean follows = true;
+
+        try (Scanner sc = new Scanner(file)) {
+            int indent_spaces = 4; // add user customization
+            ArrayList<String> list = new ArrayList<String>();
+
+            while (sc.hasNextLine()) {
+                list.add(sc.nextLine());
+            }
+
+            System.out.println(list);
+
+            for (int i = 0; i < list.size(); i++) {
+
+                spaces = 0;
+                ch = (list.get(i)).stripTrailing();
+
+                cc = "" + ch.charAt(ch.length() - 1);
+                // System.out.println(ch);
+                if (ch != "") {
+                    if (cc.contains("{")) {
+                        space = curv_count * indent_spaces;
+                        curv_count++;
+
+                    } else if (cc.contains("}")) {
+                        curv_count--;
+                        space = curv_count * indent_spaces;
+                    } else {
+                        space = curv_count * indent_spaces;
+                    }
+
+                    for (int j = 0; j < space; j++) {
+                        if (Character.isWhitespace(ch.charAt(j))) {
+                            spaces++;
+                        }
+
+                    }
+                    if (spaces == space) {
+                        follows = true;
+                    } else {
+                        follows = false;
+                        break;
+                    }
+                }
+            }
+
+            // System.out.println(list);
+            System.out.println(follows);
+        } catch (FileNotFoundException | StringIndexOutOfBoundsException e) {
+            follows = false;
+            System.out.println(follows);
+        }
+
+    }
+
+    public void function_name() {
+
+    }
+
+}
