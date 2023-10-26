@@ -1,7 +1,7 @@
 // file for taking input of code file
 public class mainclass {
-    public static void main(String[] Args) {
-        camelCase cam = new camelcase();
+    public static void main(String[] Args) {  
+        camelCase cam = new camelcase();    
         cam.variable_name("file.txt");
         indents indent = new indents();
         indent.indent("File.txt");

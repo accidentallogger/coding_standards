@@ -4,7 +4,7 @@ public class mainclass {
 
     public static void main(String[] Args) {
 
-        camelcase cam = new camelcase();
+        regex cam = new regex();
         cam.variable_name("file.txt");
 
         indents indent = new indents();

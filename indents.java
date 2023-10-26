@@ -31,19 +31,22 @@ public class indents implements rules {
             ArrayList<String> list = new ArrayList<String>();
 
             while (sc.hasNextLine()) {
-                list.add(sc.nextLine());
+
+                list.add((sc.nextLine()).stripTrailing());
+
             }
+            list.remove("");
+            list.remove(" ");
 
-            System.out.println(list);
-
+            // System.out.println(list);
             for (int i = 0; i < list.size(); i++) {
 
                 spaces = 0;
-                ch = (list.get(i)).stripTrailing();
+                ch = list.get(i);
 
                 cc = "" + ch.charAt(ch.length() - 1);
                 // System.out.println(ch);
-                if (ch != "") {
+                if (ch.equals("") == false) {
                     if (cc.contains("{")) {
                         space = curv_count * indent_spaces;
                         curv_count++;
@@ -55,7 +58,7 @@ public class indents implements rules {
                         space = curv_count * indent_spaces;
                     }
 
-                    for (int j = 0; j < space; j++) {
+                    for (int j = 0; j < ch.indexOf("" + ch.trim().charAt(0)); j++) {
                         if (Character.isWhitespace(ch.charAt(j))) {
                             spaces++;
                         }
@@ -63,11 +66,16 @@ public class indents implements rules {
                     }
                     if (spaces == space) {
                         follows = true;
+                    } else if (spaces > space) {
+                        follows = false;
+                        break;
                     } else {
                         follows = false;
                         break;
                     }
+
                 }
+
             }
 
             // System.out.println(list);

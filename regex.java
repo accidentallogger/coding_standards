@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class camelcase implements rules {
+public class regex implements rules {
 
     public void indent(String Filename) {
 
@@ -33,7 +33,7 @@ public class camelcase implements rules {
                 list.add(sc.nextLine());
             }
 
-            String camelCase = "([a-z]+[A-Z]+\\w+)+";
+            String var_regxString = "([a-z]+[A-Z]+\\w+)+"; // user input
             for (int i = 0; i < list.size(); i++) {
                 if ((list.get(i)).contains("int") || (list.get(i)).contains("String")
                         || (list.get(i)).contains("Boolean") || (list.get(i)).contains("float")) {
@@ -49,7 +49,7 @@ public class camelcase implements rules {
 
             list_1.remove(" ");
             for (int i = 0; i < list_1.size(); i++) {
-                if ((list_1.get(i)).matches(camelCase)) {
+                if ((list_1.get(i)).matches(var_regxString)) {
                     correct_list.add(list_1.get(i));
                 }
 
