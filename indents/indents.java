@@ -1,3 +1,7 @@
+package indents;
+
+import rules.rules;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;

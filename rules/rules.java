@@ -1,5 +1,6 @@
+package rules;
 
-interface rules {
+public interface rules {
     public void indent(String Filename);
 
     public void speed();

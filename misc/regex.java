@@ -1,7 +1,11 @@
+package misc;
+
+import rules.rules;
 import java.io.File;
 import java.io.FileNotFoundException;
 //import java.util.regex.*;
 import java.util.Scanner;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
