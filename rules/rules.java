@@ -1,13 +1,15 @@
 package rules;
 
+import java.util.ArrayList;
+
 public interface rules {
-    public void indent(String Filename);
+    public Boolean indent(String Filename, int indspaces);
 
     public void speed();
 
-    public void no_of_nests();
+    public Boolean no_of_nests(String Filename, int endp);
 
-    public void function_name();
+    public ArrayList<String> function_name(String Filename, String regxw);
 
-    public void variable_name(String Filename);
+    public ArrayList<String> variable_name(String Filename, String regxw);
 }

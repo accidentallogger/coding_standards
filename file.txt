@@ -1,9 +1,12 @@
-// file for taking input of code file
-public class mainclass {
-    public static void main(String[] Args) {  
-        camelCase cam = new camelcase();    
-        cam.variable_name("file.txt");
-        indents indent = new indents();
-        indent.indent("File.txt");
+package rules;
+import java.util.ArrayList;
+public interface rules {
+    public Boolean indent(String Filename){
+        main(){
+        }
+    }
+}
+main{
+    class{
     }
 }

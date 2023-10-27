@@ -1,26 +1,12 @@
 package indents;
 
-import rules.rules;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class indents implements rules {
+public class indents {
 
-    public void speed() {
-
-    }
-
-    public void no_of_nests() {
-
-    }
-
-    public void variable_name(String Filename) {
-
-    }
-
-    public void indent(String Filename) {
+    public Boolean indent(String Filename, int indspaces) {
         File file = new File(Filename);
         int curv_count = 0;
         int space = 0;
@@ -31,7 +17,7 @@ public class indents implements rules {
         Boolean follows = true;
 
         try (Scanner sc = new Scanner(file)) {
-            int indent_spaces = 4; // add user customization
+            int indent_spaces = indspaces; // add user customization
             ArrayList<String> list = new ArrayList<String>();
 
             while (sc.hasNextLine()) {
@@ -88,11 +74,6 @@ public class indents implements rules {
             follows = false;
             System.out.println(follows);
         }
-
+        return follows;
     }
-
-    public void function_name() {
-
-    }
-
 }
