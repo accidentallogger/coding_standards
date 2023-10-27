@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public interface rules {
     public Boolean indent(String Filename, int indspaces);
 
-    public void speed();
-
     public Boolean no_of_nests(String Filename, int endp);
 
     public ArrayList<String> function_name(String Filename, String regxw);

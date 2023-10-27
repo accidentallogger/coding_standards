@@ -23,10 +23,6 @@ public class implemented implements rules {
         return ind.indent(Filename, indspaces);
     }
 
-    public void speed() {
-
-    }
-
     public Boolean no_of_nests(String Filename, int endp) {
         no_nests nes = new no_nests();
         return nes.no_of_nests(Filename, endp);
