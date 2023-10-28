@@ -18,9 +18,9 @@ public class regex_variables {
             while (sc.hasNextLine()) {
                 list.add(sc.nextLine());
             }
-            regxw = "([a-z]+[A-Z]+\\w+)+";
-            String var_regxString = regxw; // user input
 
+            String var_regxString = regxw; // user input
+            // System.out.println(regxw);
             list_1 = misc.compare_datatype_names.datatypenames(list, list_1);
 
             for (int i = 0; i < list_1.size(); i++) {

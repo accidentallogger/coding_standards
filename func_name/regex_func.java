@@ -18,9 +18,10 @@ public class regex_func {
             while (sc.hasNextLine()) {
                 list.add(sc.nextLine());
             }
-
+            // regxw = "([a-z]+[A-Z]+\\w+)+";
             String var_regxString = regxw; // user input
-
+            // System.out.println(regxw);
+            // System.out.println("([a-z]+[A-Z]+\\w+)+");
             list_1 = misc.compare_func_names.funcenames(list, list_1);
 
             for (int j = 0; j < list_1.size(); j++) {

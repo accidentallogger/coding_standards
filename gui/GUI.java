@@ -1,9 +1,5 @@
 package gui;
 
-import javax.swing.*;
-
-import impl.implemented;
-
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -12,6 +8,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class GUI implements ActionListener {
     public static JFrame frame1;
@@ -95,8 +99,9 @@ public class GUI implements ActionListener {
         // checking validity of input paramaters
         user = userText.getText();
         pass = passwordText.getText();
-        if (user.contains("TnY") == true) {
-            if (pass.contains("YnT") == true) {
+
+        if ((user.contains("tan") || user.contains("yug")) || user.contains("admin")) {
+            if (pass.contains("may") || pass.contains("aank") || pass.contains("gs")) {
 
                 GUI2 instruction = new GUI2();
                 instruction.frame2();
@@ -115,7 +120,8 @@ public class GUI implements ActionListener {
 class GUI2 implements ActionListener {
     public static JFrame frame2;
     public static JPanel panel2;
-    public static JLabel instructionLabel, varN, metN, indN;
+    public static JLabel instructionLabel, varN, metN, indN, nestN;
+    public static JTextField varT, metT, indT, nestT;
     public static JButton OK;
     public static Font ins;
 
@@ -135,22 +141,42 @@ class GUI2 implements ActionListener {
 
         // InstructionLabel
         ins = new Font("Times New Roman", Font.BOLD, 14);
-        instructionLabel = new JLabel("Instructions:");
+        instructionLabel = new JLabel("Instructions(Parameters):");
         instructionLabel.setFont(ins);
         instructionLabel.setBounds(20, 50, 1000, 20);
         panel2.add(instructionLabel);
 
-        varN = new JLabel("Rule 1:");
+        varN = new JLabel("1: Enter your standard for variable naming");
         varN.setBounds(20, 80, 1000, 20);
         panel2.add(varN);
 
-        metN = new JLabel("Rule 2:");
-        metN.setBounds(20, 100, 1000, 20);
+        metN = new JLabel("2: Enter your standard for function naming");
+        metN.setBounds(20, 120, 1000, 20);
         panel2.add(metN);
 
-        indN = new JLabel("Rule 3:");
-        indN.setBounds(20, 120, 1000, 20);
+        indN = new JLabel("3: Enter total number of indent spacing");
+        indN.setBounds(20, 160, 1000, 20);
         panel2.add(indN);
+
+        nestN = new JLabel("4.Enter highest number of nests allowed");
+        nestN.setBounds(20, 200, 1000, 20);
+        panel2.add(nestN);
+
+        varT = new JTextField();
+        varT.setBounds(300, 80, 100, 20);
+        panel2.add(varT);
+
+        metT = new JTextField();
+        metT.setBounds(300, 120, 100, 20);
+        panel2.add(metT);
+
+        indT = new JTextField();
+        indT.setBounds(300, 160, 100, 20);
+        panel2.add(indT);
+
+        nestT = new JTextField();
+        nestT.setBounds(300, 200, 100, 20);
+        panel2.add(nestT);
 
         OK = new JButton("OK");
         OK.setBounds(300, 400, 100, 20);
@@ -163,6 +189,39 @@ class GUI2 implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e2) {
+
+        String varS = varT.getText();
+        String metS = metT.getText();
+        String indS = indT.getText();
+        String nestS = nestT.getText();
+
+        Path path1 = Paths.get("gui\\gui_output\\VariableName.txt");
+        Path path2 = Paths.get("gui\\gui_output\\MethodName.txt");
+        Path path3 = Paths.get("gui\\gui_output\\Indent.txt");
+        Path path4 = Paths.get("gui\\gui_output\\Nest.txt");
+
+        byte[] arr1 = varS.getBytes();
+        byte[] arr2 = metS.getBytes();
+        byte[] arr3 = indS.getBytes();
+        byte[] arr4 = nestS.getBytes();
+
+        // Try block to check for exceptions
+        try {
+            // Now calling Files.write() method using path
+            // and byte array
+            Files.write(path1, arr1);
+            Files.write(path2, arr2);
+            Files.write(path3, arr3);
+            Files.write(path4, arr4);
+
+        }
+
+        // Catch block to handle the exceptions
+        catch (IOException ex) {
+            // Print message as exception occurred when
+            // invalid path of local machine is passed
+            System.out.print("Invalid Path");
+        }
 
         GUI3 UI = new GUI3();
         UI.frame3();
@@ -218,19 +277,16 @@ class GUI3 implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e3) {
 
-        String inputc = input.getText();
+        String inputS = input.getText();
 
         // passing file instance in filewriter
-
+        String pp = "gui\\gui_output\\file.txt";
         // Creating an instance of file
-        String pp = ("file.txt");
         Path path = Paths.get(pp);
-
+        impl.implemented.call_all(pp);
         // Converting string to byte array
         // using getBytes() method
-        byte[] arr = inputc.getBytes();
-
-        implemented.call_all(pp);
+        byte[] arr = inputS.getBytes();
 
         // Try block to check for exceptions
         try {

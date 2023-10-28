@@ -5,17 +5,27 @@ import indents.indents;
 import no_nests.no_nests;
 import var_name.regex_variables;
 import func_name.regex_func;
+import misc.readfiles;
 import java.util.ArrayList;
 
+//"([a-z]+[A-Z]+\\w+)+"
 public class implemented implements rules {
 
     public static void call_all(String Filename) {
         implemented imp = new implemented();
         // get custom input from user gui
-        imp.indent(Filename, 4);
-        imp.function_name(Filename, "([a-z]+[A-Z]+\\w+)+");
-        imp.variable_name(Filename, "([a-z]+[A-Z]+\\w+)+");
-        imp.no_of_nests(Filename, 3);
+        String f1 = ("gui\\gui_output\\VariableName.txt");
+        String f2 = ("gui\\gui_output\\MethodName.txt");
+        String f3 = ("gui\\gui_output\\Indent.txt");
+        String f4 = ("gui\\gui_output\\Nest.txt");
+
+        ArrayList<String> arr = readfiles.readf(f3, f2, f4, f1);
+        // System.out.println(arr);
+        imp.indent(Filename, Integer.parseInt(arr.get(0)));
+        imp.function_name(Filename, arr.get(1));
+        imp.no_of_nests(Filename, Integer.parseInt(arr.get(2)));
+        imp.variable_name(Filename, arr.get(3));
+
     }
 
     public Boolean indent(String Filename, int indspaces) {

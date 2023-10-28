@@ -1,0 +1,10 @@
+public class main{
+    public static void mainMain(String args[]){
+        int camCase = 0;
+        String CamCse =9;
+    }
+
+    public void camCase (){
+
+    }
+}
