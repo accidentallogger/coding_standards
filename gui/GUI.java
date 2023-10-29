@@ -17,6 +17,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import impl.implemented;
+
 public class GUI implements ActionListener {
     public static JFrame frame1;
     public static JPanel panel1;
@@ -120,7 +122,7 @@ public class GUI implements ActionListener {
 class GUI2 implements ActionListener {
     public static JFrame frame2;
     public static JPanel panel2;
-    public static JLabel instructionLabel, varN, metN, indN, nestN;
+    public static JLabel instructionLabel, varN, metN, indN, nestN, caJ, snJ, paJ;
     public static JTextField varT, metT, indT, nestT;
     public static JButton OK;
     public static Font ins;
@@ -177,6 +179,18 @@ class GUI2 implements ActionListener {
         nestT = new JTextField();
         nestT.setBounds(300, 200, 100, 20);
         panel2.add(nestT);
+
+        caJ = new JLabel("Regex Value for Camel Case: ([a-z]+[A-Z]+\\w+)+");
+        caJ.setBounds(50, 300, 300, 20);
+        panel2.add(caJ);
+
+        paJ = new JLabel("Regex Value for Pascal Case: ([a-z]+[A-Z]+\\w+)+");
+        paJ.setBounds(50, 330, 300, 20);
+        panel2.add(paJ);
+
+        snJ = new JLabel("Regex Value for Snake Case: ([a-z]+[A-Z]+\\w+)+");
+        snJ.setBounds(50, 360, 300, 20);
+        panel2.add(snJ);
 
         OK = new JButton("OK");
         OK.setBounds(300, 400, 100, 20);
@@ -281,9 +295,10 @@ class GUI3 implements ActionListener {
 
         // passing file instance in filewriter
         String pp = "gui\\gui_output\\file.txt";
+        implemented.call_all(pp);
         // Creating an instance of file
         Path path = Paths.get(pp);
-        impl.implemented.call_all(pp);
+
         // Converting string to byte array
         // using getBytes() method
         byte[] arr = inputS.getBytes();
@@ -311,12 +326,13 @@ class GUI3 implements ActionListener {
 class GUI4 implements ActionListener {
     public static JFrame frame4;
     public static JPanel panel4;
+    public static JLabel varO, metO, nestO, indO;
     public static JButton finish;
 
     public void frame4() {
 
         frame4 = new JFrame();
-        frame4.setSize(400, 400);
+        frame4.setSize(800, 400);
         frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel4 = new JPanel();
@@ -328,6 +344,34 @@ class GUI4 implements ActionListener {
         finish = new JButton("Finish");
         finish.setBounds(100, 300, 100, 20);
         panel4.add(finish);
+
+        indO = new JLabel(" following indentation: " + Boolean.toString(implemented.a));
+        indO.setBounds(30, 30, 500, 20);
+        panel4.add(indO);
+
+        StringBuffer sb = new StringBuffer();
+        StringBuffer ab = new StringBuffer();
+        // ([a-z]+[A-Z]+\w+)+
+        for (String s : implemented.b) {
+            sb.append(s);
+            sb.append(" ");
+        }
+
+        metO = new JLabel("cfunction name that follow the naming scheme: " + sb);
+        metO.setBounds(30, 70, 500, 20);
+        panel4.add(metO);
+
+        nestO = new JLabel(" does it follow number of nests: " + Boolean.toString(implemented.c));
+        nestO.setBounds(30, 110, 500, 20);
+        panel4.add(nestO);
+        for (String s : implemented.d) {
+            ab.append(s);
+            ab.append(" ");
+        }
+
+        varO = new JLabel(" variable name that follow the naming scheme: " + ab);
+        varO.setBounds(30, 150, 500, 20);
+        panel4.add(varO);
 
         finish.addActionListener(this);
 

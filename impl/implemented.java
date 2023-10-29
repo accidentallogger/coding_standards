@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 //"([a-z]+[A-Z]+\\w+)+"
 public class implemented implements rules {
+    public static Boolean a;
+    public static ArrayList<String> b;
+    public static Boolean c;
+    public static ArrayList<String> d;
 
     public static void call_all(String Filename) {
         implemented imp = new implemented();
@@ -21,10 +25,10 @@ public class implemented implements rules {
 
         ArrayList<String> arr = readfiles.readf(f3, f2, f4, f1);
         // System.out.println(arr);
-        imp.indent(Filename, Integer.parseInt(arr.get(0)));
-        imp.function_name(Filename, arr.get(1));
-        imp.no_of_nests(Filename, Integer.parseInt(arr.get(2)));
-        imp.variable_name(Filename, arr.get(3));
+        a = (imp.indent(Filename, Integer.parseInt(arr.get(0))));
+        b = (imp.function_name(Filename, arr.get(1)));
+        c = (imp.no_of_nests(Filename, Integer.parseInt(arr.get(2))));
+        d = (imp.variable_name(Filename, arr.get(3)));
 
     }
 
