@@ -180,17 +180,25 @@ class GUI2 implements ActionListener {
         nestT.setBounds(300, 200, 100, 20);
         panel2.add(nestT);
 
-        caJ = new JLabel("Regex Value for Camel Case: ([a-z]+[A-Z]+\\w+)+");
+        JTextArea caJ = new JTextArea("Regex Value for Camel Case: ([a-z]+[A-Z]+\\w+)+");
         caJ.setBounds(50, 300, 300, 20);
         panel2.add(caJ);
 
-        paJ = new JLabel("Regex Value for Pascal Case: ([a-z]+[A-Z]+\\w+)+");
+        JTextArea paJ = new JTextArea("Regex Value for Pascal Case: ^[A-Z][a-z]*([A-Z][a-z]*)");
         paJ.setBounds(50, 330, 300, 20);
         panel2.add(paJ);
 
-        snJ = new JLabel("Regex Value for Snake Case: ([a-z]+[A-Z]+\\w+)+");
+        JTextArea snJ = new JTextArea("Regex Value for Snake Case: ^[a-z](?!.*?[^a-z_]).*?[a-z]$");
         snJ.setBounds(50, 360, 300, 20);
         panel2.add(snJ);
+
+        JLabel rulm = new JLabel("leave a space between ; and the code");
+        rulm.setBounds(50, 390, 300, 20);
+        panel2.add(rulm);
+
+        JLabel rulm2 = new JLabel("leave a space between () and the functionname");
+        rulm2.setBounds(50, 420, 300, 20);
+        panel2.add(rulm2);
 
         OK = new JButton("OK");
         OK.setBounds(300, 400, 100, 20);
@@ -334,7 +342,8 @@ class GUI4 implements ActionListener {
         frame4 = new JFrame();
         frame4.setSize(800, 400);
         frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        String pp = "gui\\gui_output\\file.txt";
+        implemented.call_all(pp);
         panel4 = new JPanel();
         panel4.setVisible(true);
         panel4.setLayout(null);
@@ -345,7 +354,8 @@ class GUI4 implements ActionListener {
         finish.setBounds(100, 300, 100, 20);
         panel4.add(finish);
 
-        indO = new JLabel(" following indentation: " + Boolean.toString(implemented.a));
+        indO = new JLabel("<html> following indentation: <font color = 'green'>" + Boolean.toString(implemented.a)
+                + "</font></html>");
         indO.setBounds(30, 30, 500, 20);
         panel4.add(indO);
 
@@ -357,11 +367,13 @@ class GUI4 implements ActionListener {
             sb.append(" ");
         }
 
-        metO = new JLabel("cfunction name that follow the naming scheme: " + sb);
+        metO = new JLabel(
+                "<html> function name that follow the naming scheme: <font color='green'>" + sb + "</font></html>");
         metO.setBounds(30, 70, 500, 20);
         panel4.add(metO);
 
-        nestO = new JLabel(" does it follow number of nests: " + Boolean.toString(implemented.c));
+        nestO = new JLabel("<html> does it follow number of nests: <font color='green'>"
+                + Boolean.toString(implemented.c) + "</font></html>");
         nestO.setBounds(30, 110, 500, 20);
         panel4.add(nestO);
         for (String s : implemented.d) {
@@ -369,7 +381,8 @@ class GUI4 implements ActionListener {
             ab.append(" ");
         }
 
-        varO = new JLabel(" variable name that follow the naming scheme: " + ab);
+        varO = new JLabel("<html> variable name that follow the naming scheme: <font color = 'green'>" + ab
+                + "</font></html>");
         varO.setBounds(30, 150, 500, 20);
         panel4.add(varO);
 
